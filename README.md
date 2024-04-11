@@ -66,7 +66,7 @@ In rom folder,
  ```
 . build/envsetup.sh
 ccache -M 50G -F 0
-lunch treble_arm64_bvN-userdebug
+lunch treble_arm64_bN-ap1a-userdebug
 make systemimage -j$(nproc --all)
  ```
 
@@ -79,7 +79,7 @@ In rom folder,
 
    ```
 cd out/target/product/tdgsi_arm64_ab
-7z a system.img.xz "system.img"
+7zz a system.img.xz "system.img"
    ```
 
 
