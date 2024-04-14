@@ -1,10 +1,11 @@
+English | [Русский](README-RU.md)
 ### To get started with building PixelOS GSI,
-you'll need to get familiar with [Git and Repo](https://source.android.com/source/using-repo.html) as well as [How to build a GSI](https://github.com/phhusson/treble_experimentations/wiki/How-to-build-a-GSI%3F).
+You'll need to get familiar with [Git and Repo](https://source.android.com/source/using-repo.html) as well as [How to build a GSI](https://github.com/phhusson/treble_experimentations/wiki/How-to-build-a-GSI%3F).
 
 
 ### Create the directories
 
-As a first step, you'll have to create and enter a folder with the appropriate name.
+As a first step, you'll have to create and enter a folder with the appropriate name
 To do that, run these commands:
 
 ```bash
@@ -74,7 +75,7 @@ make systemimage -j$(nproc --all)
 ## Compress
 
 After compilation,
-If you want to compress the build.
+If you want to compress the build, i recommend use [7-zip](https://aur.archlinux.org/packages/7-zip), for a fast and safe way
 In rom folder,
 
    ```
@@ -83,9 +84,19 @@ cd out/target/product/tdgsi_arm64_ab
    ```
 
 
+## Create VNDK Lite variant
+
+Copy the resulting system.img to the treble_adapter folder in rom
+Then,
+
+ ```
+sudo bash lite-adapter.sh 64 system.img
+ ```
+
+
 ## Troubleshoot
  
-If you face any conflicts while applying patches, apply the patch manually.
+If you face any conflicts while applying patches, apply the patch manually
 
 
 
