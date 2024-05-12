@@ -1,0 +1,38 @@
+diff --git a/common/common-vendor.mk b/common/common-vendor.mk
+index a0fd3a7..df5b01c 100644
+--- a/common/common-vendor.mk
++++ b/common/common-vendor.mk
+@@ -192,25 +192,18 @@ PRODUCT_PACKAGES += \
+     GoogleTTS \
+     LatinIMEGooglePrebuilt \
+     LocationHistoryPrebuilt \
+-    Maps \
+     MarkupGoogle \
+     ModuleMetadataGoogle \
+     NgaResources \
+-    Photos \
+     PixelThemesStub \
+     PixelThemesStub2022_and_newer \
+     PrebuiltDeskClockGoogle \
+-    PrebuiltGmail \
+     SoundAmplifierPrebuilt \
+     SoundPickerPrebuilt \
+     SwitchAccessPrebuilt \
+     TrichromeLibrary-Stub \
+-    WallpaperEmojiPrebuilt \
+     WebViewGoogle-Stub \
+-    talkback \
+     AICorePrebuilt \
+-    AiWallpapers \
+-    AndroidAutoStubPrebuilt \
+     ConfigUpdater \
+     DeviceIntelligenceNetworkPrebuilt \
+     DevicePersonalizationPrebuiltPixel2023 \
+@@ -239,7 +232,6 @@ PRODUCT_PACKAGES += \
+     SettingsIntelligenceGooglePrebuilt \
+     SetupWizardPrebuilt \
+     TurboPrebuilt \
+-    Velvet \
+     WallpaperEffect \
+     WeatherPixelPrebuilt \
+     WellbeingPrebuilt \

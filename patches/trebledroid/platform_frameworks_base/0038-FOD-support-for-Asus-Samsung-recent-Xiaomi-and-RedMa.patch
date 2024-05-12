@@ -38,10 +38,10 @@ diff --git a/packages/SystemUI/Android.bp b/packages/SystemUI/Android.bp
 index 32167401a36b..3c45953fbfb8 100644
 --- a/packages/SystemUI/Android.bp
 +++ b/packages/SystemUI/Android.bp
-@@ -206,6 +206,10 @@ android_library {
-         "motion_tool_lib",
+@@ -207,6 +207,10 @@ android_library {
          "notification_flags_lib",
          "bcsmartspace-google",
+         "vendor.lineage.powershare-V1.0-java",
 +        "vendor.goodix.hardware.biometrics.fingerprint-V2.1-java",
 +        "vendor.xiaomi.hw.touchfeature-V1.0-java",
 +        "vendor.xiaomi.hardware.fingerprintextension-V1.0-java",
