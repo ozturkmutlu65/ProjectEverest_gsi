@@ -9,7 +9,7 @@ Subject: [PATCH 6/9] Add properties to disable some features/commands/states
  1 file changed, 68 insertions(+), 4 deletions(-)
 
 diff --git a/system/gd/hci/controller.cc b/system/gd/hci/controller.cc
-index 7b78be8aa4..668ccf2562 100644
+index 6facfef4c3..f28a8b9288 100644
 --- a/system/gd/hci/controller.cc
 +++ b/system/gd/hci/controller.cc
 @@ -16,6 +16,7 @@
@@ -18,9 +18,9 @@ index 7b78be8aa4..668ccf2562 100644
 
 +#include <base/strings/string_split.h>
  #include <android-base/strings.h>
- #include <future>
- #include <memory>
-@@ -30,6 +31,7 @@
+ #include <android_bluetooth_flags.h>
+
+@@ -34,6 +35,7 @@
  #include "os/metrics.h"
  #include "os/system_properties.h"
  #include "sysprops/sysprops_module.h"
@@ -28,7 +28,7 @@ index 7b78be8aa4..668ccf2562 100644
 
  namespace bluetooth {
  namespace hci {
-@@ -305,7 +307,23 @@ struct Controller::impl {
+@@ -316,7 +318,23 @@ struct Controller::impl {
      ASSERT(complete_view.IsValid());
      ErrorCode status = complete_view.GetStatus();
      ASSERT_LOG(status == ErrorCode::SUCCESS, "Status 0x%02hhx, %s", status, ErrorCodeText(status).c_str());
@@ -53,7 +53,7 @@ index 7b78be8aa4..668ccf2562 100644
 
      if (auto disabledCommands = os::GetSystemProperty(kPropertyDisabledCommands)) {
        for (const auto& command : android::base::Split(*disabledCommands, ",")) {
-@@ -323,7 +341,25 @@ struct Controller::impl {
+@@ -334,7 +352,25 @@ struct Controller::impl {
      ErrorCode status = complete_view.GetStatus();
      ASSERT_LOG(status == ErrorCode::SUCCESS, "Status 0x%02hhx, %s", status, ErrorCodeText(status).c_str());
      uint8_t page_number = complete_view.GetPageNumber();
@@ -80,7 +80,7 @@ index 7b78be8aa4..668ccf2562 100644
      bluetooth::os::LogMetricBluetoothLocalSupportedFeatures(page_number, complete_view.GetExtendedLmpFeatures());
      // Query all extended features
      if (page_number < complete_view.GetMaximumPageNumber()) {
-@@ -476,7 +512,21 @@ struct Controller::impl {
+@@ -487,7 +523,21 @@ struct Controller::impl {
      ASSERT(complete_view.IsValid());
      ErrorCode status = complete_view.GetStatus();
      ASSERT_LOG(status == ErrorCode::SUCCESS, "Status 0x%02hhx, %s", status, ErrorCodeText(status).c_str());
@@ -103,7 +103,7 @@ index 7b78be8aa4..668ccf2562 100644
    }
 
    void le_read_supported_states_handler(CommandCompleteView view) {
-@@ -484,7 +534,21 @@ struct Controller::impl {
+@@ -495,7 +545,21 @@ struct Controller::impl {
      ASSERT(complete_view.IsValid());
      ErrorCode status = complete_view.GetStatus();
      ASSERT_LOG(status == ErrorCode::SUCCESS, "Status 0x%02hhx, %s", status, ErrorCodeText(status).c_str());
@@ -125,7 +125,7 @@ index 7b78be8aa4..668ccf2562 100644
 +    le_supported_states_ = local_states;
    }
 
-   void le_read_connect_list_size_handler(CommandCompleteView view) {
+   void le_read_accept_list_size_handler(CommandCompleteView view) {
 
 -- 
 2.25.1

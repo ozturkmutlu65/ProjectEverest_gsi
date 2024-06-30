@@ -32,8 +32,20 @@ repo init -u https://github.com/PixelOS-AOSP/manifest.git -b fourteen --git-lfs
 repo sync --force-sync --optimized-fetch --no-tags --no-clone-bundle --prune -j$(nproc --all)
 ```
 
+### After synchronizing the source code, generate private keys to sign the build:
 
-### After syncing, apply the patches:
+```bash
+subject='/C=US/ST=State/L=City/O=Android/OU=Android/CN=Android/emailAddress=email@example.com'
+for x in releasekey platform shared media networkstack verity otakey testkey sdk_sandbox bluetooth nfc; do \
+    ./development/tools/make_key vendor/aosp/signing/keys/$x "$subject"; \
+done
+```
+Where:
+
+C: Country code (e.g., US) ST: State name L: City name O: Organization name OU: Organizational Unit name CN: Common name emailAddress: Your email address
+
+
+### Next, apply patches:
 
 Copy the patches folder to rom folder and in rom folder
 
@@ -67,7 +79,7 @@ In rom folder,
  ```
 . build/envsetup.sh
 ccache -M 50G -F 0
-lunch treble_arm64_bN-ap1a-userdebug
+lunch treble_arm64_bN-ap2a-userdebug
 make systemimage -j$(nproc --all)
  ```
 

@@ -25,7 +25,6 @@ repo init -u https://github.com/PixelOS-AOSP/manifest.git -b fourteen --git-lfs
     git clone https://github.com/MisterZtr/treble_manifest.git .repo/local_manifests  -b 14
 
 
-
 ### После этого синхронизируйте исходный код, выполнив эту команду:
 
 ```bash
@@ -33,7 +32,20 @@ repo sync --force-sync --optimized-fetch --no-tags --no-clone-bundle --prune -j$
 ```
 
 
-### После синхронизации примените патчи:
+### После синхронизации исходного кода, сгенерируйте приватные ключи для подписывания сборки:
+
+```bash
+subject='/C=US/ST=State/L=City/O=Android/OU=Android/CN=Android/emailAddress=email@example.com'
+for x in releasekey platform shared media networkstack verity otakey testkey sdk_sandbox bluetooth nfc; do \
+    ./development/tools/make_key vendor/aosp/signing/keys/$x "$subject"; \
+done
+```
+Где:
+
+C: Код страны (например., RU) ST: Название региона L: Название города O: Название организации OU: Имя сотрудника организации CN: Общее имя emailAddress: Ваш адресс электронной почты
+
+
+### Далее примените патчи:
 
 Скопируйте папку patches в папку c прошивкой, а далее
 
@@ -67,7 +79,7 @@ export CCACHE_MAXSIZE=50G # 50 GB
  ```
 . build/envsetup.sh
 ccache -M 50G -F 0
-lunch treble_arm64_bN-ap1a-userdebug
+lunch treble_arm64_bN-ap2a-userdebug
 make systemimage -j$(nproc --all)
  ```
 
