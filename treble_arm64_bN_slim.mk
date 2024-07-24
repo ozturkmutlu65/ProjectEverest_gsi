@@ -14,5 +14,7 @@ PRODUCT_MODEL := TrebleDroid
 # Overwrite the inherited "emulator" characteristics
 PRODUCT_CHARACTERISTICS := device
 
+BOARD_EXT4_SHARE_DUP_BLOCKS := true
+
 PRODUCT_PACKAGES += 
 
