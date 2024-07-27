@@ -47,5 +47,5 @@ PRODUCT_MAKEFILES := \
 	$(LOCAL_DIR)/treble_arm_boN.mk \
 	$(LOCAL_DIR)/treble_a64_boS.mk \
 	$(LOCAL_DIR)/treble_a64_boN.mk \
-        $(LOCAL_DIR)/treble_arm64_bN.mk \
-        $(LOCAL_DIR)/treble_arm64_bN_slim.mk \
+        $(LOCAL_DIR)/treble_arm64_bvN.mk \
+        $(LOCAL_DIR)/treble_arm64_bvN_slim.mk \
